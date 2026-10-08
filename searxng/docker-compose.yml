@@ -1,0 +1,28 @@
+services:
+  searxng:
+    image: docker.io/searxng/searxng:latest
+    container_name: searxng
+    restart: unless-stopped
+    ports:
+      - "8888:8080"
+    volumes:
+      - ./searxng:/etc/searxng:rw
+    environment:
+      - SEARXNG_BASE_URL=http://localhost:8888/
+    depends_on:
+      - tor
+    networks:
+      - searxng-net
+
+  tor:
+    image: osminogin/tor-simple:latest
+    container_name: searxng-tor
+    restart: unless-stopped
+    ports:
+      - "0.0.0.0:9050:9050"
+    networks:
+      - searxng-net
+
+networks:
+  searxng-net:
+    driver: bridge

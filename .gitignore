@@ -1,0 +1,26 @@
+# Мусор
+*.save
+*.bak
+*.old
+*.tmp
+*.log
+*.hex
+
+# Конфиденциальное
+.env
+*.key
+*.pem
+
+# Python
+__pycache__/
+*.pyc
+venv/
+.venv/
+
+# Node
+node_modules/
+
+# OS
+.DS_Store
+Thumbs.db
+
